@@ -1,0 +1,1 @@
+enum NavbarItem { profile, car, store, wallet, restaurants }
