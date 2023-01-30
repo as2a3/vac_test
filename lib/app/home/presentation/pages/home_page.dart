@@ -24,51 +24,49 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(
-                  top: 25.h,
-                  bottom: 25.h,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 25.h,
-                        left: 25.h,
-                        right: 25.h,
-                      ),
-                      child: Text(
-                        'Business Name',
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
+            Container(
+              padding: EdgeInsets.only(
+                top: 25.h,
+                bottom: 25.h,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 25.h,
+                      left: 25.h,
+                      right: 25.h,
+                      bottom: 8.h,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.32,
-                      child: ListView.builder(
-                        scrollDirection:  Axis.horizontal,
-                        itemCount: context.read<HomeCubit>().filterEntity.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                              left: index == 0 ? 24.h : 0,
-                              right: 24.0.h,
-                            ),
-                            child: FilterItemWidget(
-                              filterEntity: context.read<HomeCubit>().filterEntity[index],
-                            ),
-                          );
-                        },
-                      ),
+                    child: Text(
+                      'Business Name',
+                      style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.width * 0.3,
+                    child: ListView.builder(
+                      scrollDirection:  Axis.horizontal,
+                      itemCount: context.read<HomeCubit>().filterEntity.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            left: index == 0 ? 24.h : 0,
+                            right: 24.0.h,
+                          ),
+                          child: FilterItemWidget(
+                            filterEntity: context.read<HomeCubit>().filterEntity[index],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
-              flex: 2,
               child: Container(
                 color: Theme.of(context).primaryColor,
                 child: BlocConsumer<HomeCubit, HomeState>(
